@@ -19,7 +19,7 @@ const feeds: Feed[] = [
 ];
 
 export const handlers = [
-  rest.get('/feeds', (req, res, ctx) => {
+  rest.get('/feeds', (_, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json({
