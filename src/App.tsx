@@ -2,6 +2,10 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { Feeds } from './features/feeds/components/Feeds';
 import { RegisterForm } from './features/registerForms/components/form';
 
+if (process.env.NODE_ENV === 'development') {
+  import('./mocks');
+}
+
 const queryClient = new QueryClient();
 
 function App() {
