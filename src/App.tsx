@@ -1,11 +1,16 @@
+import { QueryClient, QueryClientProvider } from 'react-query';
 import { Feeds } from './features/feeds/components/Feeds';
 import { RegisterForm } from './features/registerForms/components/form';
+
+const queryClient = new QueryClient();
 
 function App() {
   return (
     <div className='App'>
-      <RegisterForm />
-      <Feeds />
+      <QueryClientProvider client={queryClient}>
+        <RegisterForm />
+        <Feeds />
+      </QueryClientProvider>
     </div>
   );
 }
