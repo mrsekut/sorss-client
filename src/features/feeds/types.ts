@@ -1,5 +1,7 @@
+export type FeedId = number;
+
 export type Feed = {
-  id: number;
+  id: FeedId;
   title: string;
   url: string;
   description: string;

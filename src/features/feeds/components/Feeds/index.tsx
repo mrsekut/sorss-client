@@ -12,6 +12,7 @@ export const Feeds: React.FC = () => {
         item={feed => (
           <li key={feed.id}>
             <FeedItem
+              feedId={feed.id}
               title={feed.title}
               description={feed.description}
               url={feed.url}
