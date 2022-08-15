@@ -1,13 +1,17 @@
-import { get } from '../../requests';
-import { Feed } from './types';
+import { delete_, get } from '../../requests';
+import { Feed, FeedId } from './types';
 
 /**
  * Requests
  * =========================
  */
-export const getAllGenres = async (): Promise<Feed[]> => {
+export const getFeeds = async (): Promise<Feed[]> => {
   const result = await get<{ feeds: ResFeed[] }>('/feeds');
   return result.feeds;
+};
+
+export const deleteItem = async (feedId: FeedId): Promise<void> => {
+  await delete_<void>(`/feed/${feedId}`);
 };
 
 /**
