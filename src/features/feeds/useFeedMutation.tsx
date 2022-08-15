@@ -10,6 +10,10 @@ type Args = {
   feedId: FeedId;
 };
 
+/**
+ * TODO:
+ * - rollback
+ */
 export const useFeedMutation = () => {
   const queryClient = useQueryClient();
   const { feeds } = useFeeds();
@@ -19,7 +23,12 @@ export const useFeedMutation = () => {
     ({ feedId }: Args) => Repository.deleteItem(feedId),
     {
       onSuccess: (_, { feedId }) => {
-        open([`削除しました: ${feedId}`]);
+        open(
+          <div>
+            削除しました。
+            <button onClick={() => console.log('rollback')}>取り消す</button>
+          </div>
+        );
         queryClient.setQueriesData(
           queryKeys.feeds(),
           feeds.filter(feed => feed.id !== feedId)

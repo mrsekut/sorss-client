@@ -1,9 +1,13 @@
 import { useToastInternal } from '../../useToast';
 
+/**
+ * TODO:
+ * - style
+ */
 export const Toaster: React.FC = () => {
   const { isOpen, messages } = useToastInternal();
 
-  if (messages.length === 0 || !isOpen) {
+  if (messages == null || !isOpen) {
     return null;
   }
 
@@ -13,13 +17,12 @@ export const Toaster: React.FC = () => {
         position: 'fixed',
         zIndex: 9999,
         left: 16,
-        bottom: 16,
-        pointerEvents: 'none'
+        bottom: 16
       }}
     >
-      {messages.map(message => (
-        <div>{message}</div>
-      ))}
+      {messages.type === 'message'
+        ? messages.value.map(message => <div>{message}</div>)
+        : messages.value}
     </div>
   );
 };
